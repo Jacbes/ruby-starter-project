@@ -10,7 +10,7 @@ while exit == 'y'
   puts 'Input value:'
   value = gets.to_f
   puts 'Input type temperature to convert:'
-  to = STDIN.gets.chomp until types.include?(to) && to != from
+  to = gets.chomp until types.include?(to) && to != from
   result = builder.type_set(from)
                   .value_set(value)
                   .convert_to(to)
@@ -18,10 +18,8 @@ while exit == 'y'
   puts "Convert from #{from} to #{to} result: #{result}"
   puts 'Wanna repeat? [y, n]'
   exit = gets.chomp
-  until states.include?(exit)
-    exit = gets.chomp
-  end
-  from. = nil
+  exit = gets.chomp until states.include?(exit)
+  from = nil
   value = nil
   to = nil
 end
