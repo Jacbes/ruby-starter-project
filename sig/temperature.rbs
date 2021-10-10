@@ -1,0 +1,5 @@
+class Temperature
+  attr_accessor value: Float
+
+  def initialize: (Float value) -> void
+end
