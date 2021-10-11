@@ -3,13 +3,13 @@ require_relative 'temperature_builder'
 @types = %w[C K F]
 @states = %w[y n]
 @exit = 'y'
-while @exit == 'y'
+until @exit == 'n'
   @builder = TemperatureBuilder.new
-  puts 'Input type temperature from convert:'
+  puts 'Input type temperature from convert (C, K, F):'
   @from = $stdin.gets.chomp until @types.include?(@from)
   puts 'Input value:'
   @value = $stdin.gets.to_f
-  puts 'Input type temperature to convert:'
+  puts 'Input type temperature to convert (C, K, F):'
   @to = $stdin.gets.chomp until @types.include?(@to) && (@to != @from)
   @result = @builder.type_set(@from)
                     .value_set(@value)
