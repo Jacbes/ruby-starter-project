@@ -5,6 +5,9 @@ require_relative 'app_states/exit'
 class Application
   def run
     context = Context.new(Input.new)
-    context.do until context.state.is_a? Exit
+    until context.state.is_a? Exit
+      context.render
+      context.next
+    end
   end
 end

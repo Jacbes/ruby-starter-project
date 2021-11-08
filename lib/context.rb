@@ -14,8 +14,11 @@ class Context
     @state.context = self
   end
 
-  def do
+  def render
     @state.render
+  end
+
+  def next
     @state.next
   end
 end

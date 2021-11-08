@@ -1,16 +1,16 @@
 require './lib/app_states/input'
 
 RSpec.describe Input do
-  describe '#type? true' do
+  describe '#next' do
+    subject { Context.new(Input.new).next.state }
+
+    it { is_expected.to be_a Calc }
+  end
+
+  describe '#type?' do
     subject { Input.new.type?('C') }
 
     it { is_expected.to eq true }
-  end
-
-  describe '#type? false' do
-    subject { Input.new.type?('g') }
-
-    it { is_expected.to eq false }
   end
 
   describe '#number? true' do
@@ -20,7 +20,7 @@ RSpec.describe Input do
   end
 
   describe '#number? false' do
-    subject { Input.new.number?('f') }
+    subject { Input.new.number?('g') }
 
     it { is_expected.to eq false }
   end

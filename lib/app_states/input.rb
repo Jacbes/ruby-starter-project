@@ -22,6 +22,7 @@ class Input < State
     puts 'Input value:'
     @context.value = gets.chomp
     @context.value = gets.chomp until number?(@context.value)
+    @context.value = Float(@context.value)
   end
 
   def enter_to_type
