@@ -9,7 +9,7 @@ RSpec.describe InputValue do
   end
 
   describe '#render' do
-    it 'renders input types' do
+    it 'renders input value' do
       subject.render
       expect(io_mock).to have_received(:write).with(
         'Input value:'
@@ -21,12 +21,12 @@ RSpec.describe InputValue do
     subject { described_class.new.next }
     before { allow(io_mock).to receive(:read).and_return(value) }
 
-    context 'when the user inputs "C"' do
+    context 'when the user inputs value' do
       let(:value) { '10' }
       it { is_expected.to be_a(InputTo) }
     end
 
-    context 'when the user inputs another value' do
+    context 'when the user inputs fake' do
       let(:value) { 'fake' }
       it { is_expected.to be_a(InputValue) }
     end
