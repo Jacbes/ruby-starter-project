@@ -3,15 +3,20 @@ require_relative 'exit'
 
 class Output < State
   def render
-    puts @context.result.to_s
+    IOAdapter.instance.write(@result.to_s)
+    IOAdapter.instance.write('Another one? (y, n):')
   end
 
   def next
-    puts 'Another one? (y, n):'
-    inp = gets.chomp
-    inp = gets.chomp until exit?(inp) || again?(inp)
-    @context.transition_to(Exit.new) if exit?(inp)
-    @context.transition_to(Input.new) if again?(inp)
+    inp = IOAdapter.instance.read
+
+    if again?(inp)
+      InputFrom.new
+    elsif exit?(inp)
+      Exit.new
+    else
+      self
+    end
   end
 
   def exit?(inp)
